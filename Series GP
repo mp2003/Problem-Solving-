@@ -1,0 +1,44 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution{
+	public:
+    int m=1e9+7;
+       int Nth_term(int a, int r, int n){
+           // Code here
+           int N=n-1;
+           if(N==0) return a%m;
+           long long result=1;
+           while (N > 0) {
+        // If b is odd, multiply result with x modulo m
+        if (N % 2 == 1) {
+            result = (result * r) % m;
+        }
+        
+        // Square x and reduce modulo m
+        r = (1LL*r * r) % m;
+        
+        // Divide b by 2
+        N /= 2;
+    }
+    
+    return (a*result)%m;
+}
+};
+
+//{ Driver Code Starts.
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		int a, r, n;
+		cin >> a >> r >> n;
+		Solution ob;
+		int ans = ob.Nth_term(a, r, n);
+		cout << ans <<"\n";
+	}  
+	return 0;
+}
+// } Driver Code Ends
