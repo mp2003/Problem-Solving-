@@ -17,7 +17,6 @@ class Solution{
             result = (result * r) % m;
         }
         
-        // Square x and reduce modulo m
         r = (1LL*r * r) % m;
         
         // Divide b by 2
