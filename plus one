@@ -1,0 +1,28 @@
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function (digits) {
+    let lastVal = digits.length - 1;
+
+    if (digits[lastVal] != 9) {
+        digits[lastVal] += 1;
+    } else {
+        let carry = 0;
+        let result = [];
+        for (let i = lastVal; i >= 0; i--) {
+            let sum =0;
+            if (i == lastVal)
+                 sum = digits[i] + 1 ;
+            else
+                 sum = digits[i] + carry;
+            result.unshift(sum % 10);
+            carry = Math.floor(sum / 10);
+        }
+        if (carry > 0) {
+            result.unshift(carry);
+        } return result;
+    }
+    return digits;
+
+};
