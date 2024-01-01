@@ -1,0 +1,20 @@
+var removeElement = function(nums, val) {
+    if (nums == null || nums.length == 0)
+        return 0;
+
+    let UI = 0;
+    
+    if (nums[0] != val) {
+        nums[UI] = nums[0];
+        UI++;
+    }
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] != val) {
+            nums[UI] = nums[i];
+            UI++;
+        }
+    }
+
+    return UI;
+};
