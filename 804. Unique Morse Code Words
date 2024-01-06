@@ -1,0 +1,18 @@
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var uniqueMorseRepresentations = function (words) {
+    var morseCode = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
+    let uniqueSet = new Set();
+    for (let i = 0; i < words.length; i++) {
+        let morseStr = '';
+        for (let j = 0; j < words[i].length; j++) {
+            let charIndex = words[i][j].toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0);
+            morseStr += morseCode[charIndex];
+        }
+        uniqueSet.add(morseStr);
+    }
+
+    return uniqueSet.size;
+};
