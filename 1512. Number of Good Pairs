@@ -1,0 +1,15 @@
+function numIdenticalPairs(nums: number[]): number {
+    var GPmap = new Map<number, number>();
+    let gpcount: number = 0;
+    for (const num of nums) {
+        if (GPmap.has(num)) {
+            let count = GPmap.get(num) || 0;
+            gpcount += count;
+            GPmap.set(num, count + 1)
+        }
+        else {
+            GPmap.set(num, 1);
+        }
+    }
+    return gpcount;
+};
