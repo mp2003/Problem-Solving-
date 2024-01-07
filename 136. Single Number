@@ -1,0 +1,41 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function (nums) {
+    let min = Math.min(...nums);
+    let max = Math.max(...nums);
+
+    let Farr = new Array(max - min + 1).fill(0);
+
+    for (let i = 0; i < nums.length; i++) {
+        Farr[nums[i] - min]++;
+    }
+    for (let i = 0; i < Farr.length; i++) {
+        if (Farr[i] === 1)
+            return i + min;
+    }
+    return -1
+};
+
+
+ts solution // maps
+
+nction singleNumber(nums: number[]): number {
+
+    let Fmap = new Map<number, number>();
+
+    for (const num of nums) {
+        if (Fmap.has(num)) {
+            Fmap.set(num, (Fmap.get(num) || 0) + 1)
+        }
+        else
+            Fmap.set(num, 1);
+    }
+
+    for (const [value, freq] of Fmap) {
+        if (freq == 1)
+            return value;
+    }
+    return -1;
+}
