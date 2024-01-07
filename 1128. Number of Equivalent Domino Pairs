@@ -1,0 +1,17 @@
+function numEquivDominoPairs(dominoes: number[][]): number {
+    let count = 0;
+    let Dmap = new Map<string, number>();
+
+    for (let i = 0; i < dominoes.length; i++) {
+        let a = dominoes[i][0];
+        let b = dominoes[i][1];
+
+        let sortedDominoes = [Math.min(a, b), Math.max(a, b)].toString();
+
+        count += Dmap.get(sortedDominoes) || 0;
+
+        Dmap.set(sortedDominoes, (Dmap.get(sortedDominoes) || 0) + 1);
+    }
+
+    return count;
+};
