@@ -1,0 +1,16 @@
+function isStrictlyPalindromic(n: number): boolean {
+
+    for (let i = 2; i <= n - 2; i++) {
+        let str = n.toString(i);
+        if (!isPalindrome(str)) {
+            return false;
+            break ; 
+        }
+
+    }
+    return true;
+};
+
+const isPalindrome = (s: string) => {
+    return s === s.split('').reverse().join('');
+}
