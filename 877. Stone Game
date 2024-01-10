@@ -1,0 +1,19 @@
+function stoneGame(piles: number[]): boolean {
+    let beg: number = 0;
+    let end: number = piles.length - 1;
+    let i: number = 1
+    let aliceSum: number = 0;
+    let bobSum: number = 0;
+
+
+    while (beg < end) {
+        let max = Math.max(beg, end);
+        max === piles[beg] ? beg++ : end--;
+        i % 2 == 0 ? bobSum += max : aliceSum += max;
+        piles.splice(max);
+        i++;
+    }
+
+    return aliceSum > bobSum;
+
+};
