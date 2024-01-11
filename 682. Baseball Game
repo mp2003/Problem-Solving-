@@ -1,0 +1,18 @@
+function calPoints(ops: string[]): number {
+    let record = [];
+    for (let i = 0; i < ops.length; i++) {
+        if (ops[i] === 'C') {
+            record.pop();
+        }
+        else if (ops[i] === 'D') {
+            let last: number = Number(record[record.length - 1]);
+            record.push(last * 2);
+        }
+        else if (ops[i] === '+') {
+            record.push(Number(record[record.length - 1]) + Number(record[record.length - 2]));
+        }
+        else
+            record.push(Number(ops[i]))
+    }
+    return record.reduce((acc, current) => Number(acc) + Number(current), 0);;
+};
