@@ -1,0 +1,14 @@
+function containsDuplicate(nums: number[]): boolean {
+
+    let map = new Map<number, number>()
+    for (let num of nums) {
+        map.set(num, (map.get(num) || 0) + 1)
+    }
+
+    for (let freq of map.values()) {
+        if (freq > 1) {
+            return true;
+        }
+    }
+    return false;
+};
