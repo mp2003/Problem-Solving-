@@ -1,0 +1,24 @@
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {number}
+ */
+var repeatedStringMatch = function (a, b) {
+
+    let k = 0;
+    if (a.includes(b))
+        return 1;
+    else {
+        let repeatedStr = '';
+
+        while (repeatedStr.length < a.length + b.length) {
+            repeatedStr += a;
+            k++;
+
+            if (repeatedStr.includes(b))
+                return k;
+        }
+    }
+
+    return -1;
+};
