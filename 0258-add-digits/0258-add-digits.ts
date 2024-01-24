@@ -1,7 +1,14 @@
 function addDigits(num: number): number {
-
-    if (num === 0)
+    if (num === 0) {
         return 0;
+    }
 
-    return 1 + ((num - 1) % 9);
-};
+    let str = num.toString();
+
+    while (str.length > 1) {
+        const digitSum = Array.from(str).reduce((acc, val) => acc + Number(val), 0);
+        str = digitSum.toString();
+    }
+
+    return Number(str);
+}
