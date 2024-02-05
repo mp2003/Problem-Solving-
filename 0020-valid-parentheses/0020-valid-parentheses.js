@@ -1,25 +1,24 @@
-var isValid = function(s) {
-    if (s.length % 2 !== 0) {
-        return false; // If the length is odd, the string is unbalanced
-    }
-
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
     let stack = [];
-    
     for (let ch of s) {
-        switch (ch) {
-            case ')':
-                if (stack.pop() !== '(') return false;
-                break;
-            case '}':
-                if (stack.pop() !== '{') return false;
-                break;
-            case ']':
-                if (stack.pop() !== '[') return false;
-                break;
-            default:
-                stack.push(ch);
+        if (ch === ')' || ch === ']' || ch === '}') {
+            let lastch = stack.pop();
+            if ((ch === ')' && lastch !== '(') ||
+                (ch === '}' && lastch !== '{') ||
+                (ch === ']') && lastch !== '[') {
+                return false;
+            }
+
+        } else {
+            stack.push(ch)
+        
         }
     }
 
+    console.log(stack);
     return stack.length === 0;
 };
