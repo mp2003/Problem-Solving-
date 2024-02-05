@@ -1,23 +1,22 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isValid = function (s) {
+var isValid = function(s) {
+
     let stack = [];
-
-    for (let char of s) {
-        if (char === ')' || char === ']' || char === '}') {
-            let lastChar = stack.pop();
-
-            if ((char === ')' && lastChar !== '(') ||
-                (char === ']' && lastChar !== '[') ||
-                (char === '}' && lastChar !== '{')) {
-                return false; 
-            }
-        } else {
-            stack.push(char);
+    
+    for (let ch of s) {
+        switch (ch) {
+            case ')':
+                if (stack.pop() !== '(') return false;
+                break;
+            case '}':
+                if (stack.pop() !== '{') return false;
+                break;
+            case ']':
+                if (stack.pop() !== '[') return false;
+                break;
+            default:
+                stack.push(ch);
         }
     }
 
-    return stack.length === 0; 
+    return stack.length === 0;
 };
