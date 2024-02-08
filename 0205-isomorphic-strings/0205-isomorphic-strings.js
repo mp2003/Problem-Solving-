@@ -9,27 +9,28 @@ var isIsomorphic = function (s, t) {
     let revMap = new Map();
     // S->T
     for (let i in s) {
-        if (map.has(s[i])) {
-            if (t[i] !== map.get(s[i]))
+        if (map.has(s[i]) || revMap.has(t[i])) {
+            if (t[i] !== map.get(s[i]) || s[i] !== revMap.get(t[i]))
                 return false;
-            else
-                map.set(s[i], t[i]);
+
 
         } else {
-            map.set(s[i], t[i])
+            map.set(s[i], t[i]);
+            revMap.set(t[i], s[i]);
+
         }
     }
 
     // T->S
-    for (let i in t) {
-        if (revMap.has(t[i])) {
-            if (s[i] !== revMap.get(t[i]))
-                return false;
-            else
-                revMap.set(t[i], s[i]);
-        } else {
-            revMap.set(t[i], s[i]);
-        }
-    }
+    // for (let i in t) {
+    //     if (revMap.has(t[i])) {
+    //         if (s[i] !== revMap.get(t[i]))
+    //             return false;
+    //         else
+    //             revMap.set(t[i], s[i]);
+    //     } else {
+    //         revMap.set(t[i], s[i]);
+    //     }
+    // }
     return true;
 };
