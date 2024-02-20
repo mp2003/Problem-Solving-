@@ -5,5 +5,4 @@ function missingNumber(nums: number[]): number {
         if (i !== nums[i])
             return i;
     }
-    return null;
 };
