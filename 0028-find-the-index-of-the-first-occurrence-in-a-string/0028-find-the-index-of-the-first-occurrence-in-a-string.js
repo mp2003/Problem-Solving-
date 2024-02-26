@@ -4,11 +4,13 @@
  * @return {number}
  */
 var strStr = function (haystack, needle) {
-    for (let i = 0; i < haystack.length; i++) {
-        for (let j = 0; j < needle.length; j++) {
-            if (haystack[ i+j] != needle[j])
+    let hs = haystack.split("");
+    let n = needle.split("")
+    for (let i = 0; i < hs.length; i++) {
+        for (let j = 0; j < n.length; j++) {
+            if (hs[i+ j] != n[j])
                 break;
-            if ( j === needle.length -1)
+            if ( j === n.length -1)
                 return i
         }
     }
