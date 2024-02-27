@@ -29,7 +29,6 @@ var buddyStrings = function(s, goal) {
 
     // Check if swapping the characters at the two different indices makes the strings equal
     return (
-        diffIndices.length === 2 &&
         s[diffIndices[0]] === goal[diffIndices[1]] &&
         s[diffIndices[1]] === goal[diffIndices[0]]
     );
