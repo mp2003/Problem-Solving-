@@ -17,7 +17,6 @@ function sortString(s: string): string {
             charCount[i]--;
         }
     }
-    
     for ( let i = 25 ;i>=0;i--){
         if ( charCount[i]>0){
             ans+= String.fromCharCode ( i + 'a'.charCodeAt(0));
