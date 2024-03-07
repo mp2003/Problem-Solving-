@@ -3,12 +3,12 @@
  * @return {number[]}
  */
 var findDisappearedNumbers = function (nums) {
-  nums.sort((a, b) => a - b);
-  let set = new Set([...nums]);
-  console.log(set);
+  let map = new Map();
   let res = [];
+  for (let num of nums) map.set(num, (map.get(num) || 0) + 1);
+
   for (let i = 1; i <= nums.length; i++) {
-    if (!set.has(i)) {
+    if (map.get(i) === undefined) {
       res.push(i);
     }
   }
