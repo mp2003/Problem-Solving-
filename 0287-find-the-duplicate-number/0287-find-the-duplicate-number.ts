@@ -1,12 +1,7 @@
 function findDuplicate(nums: number[]): number {
-    let map = new Map<number, number>();
+    let arr = new Array(nums.length).fill(0);
     for (let num of nums) {
-        map.set(num, (map.get(num) || 0) + 1);
-    }
-
-    for (let [num, freq] of map) {
-        if (freq > 1) {
-            return num;
-        }
+        if (arr[num - 1] > 0) { return num }
+        arr[num - 1] = num; 
     }
 };
