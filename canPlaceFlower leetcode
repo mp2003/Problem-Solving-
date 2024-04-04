@@ -1,0 +1,18 @@
+/**
+ * @param {number[]} flowerbed
+ * @param {number} n
+ * @return {boolean}
+ */
+var canPlaceFlowers = function (arr, n) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0
+            && arr[i - 1] !== 1
+            && arr[i + 1] !== 1
+        ) {
+            console.log(n);
+            n--;
+            i++;
+        }
+    }
+    return n <= 0;
+};
