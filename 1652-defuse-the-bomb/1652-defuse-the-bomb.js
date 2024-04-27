@@ -8,19 +8,18 @@ var decrypt = function (code, k) {
     return caseTwo(code, k);
 };
 
-
-function caseOne(code, k) {
-    const n = code.length;
-    const res = [];
-    for (let i = 0; i < n; i++) {
+let caseOne = (code, k) => {
+    let res = [];
+    for (let i = 0; i < code.length; i++) {
         let sum = 0;
         for (let j = 1; j <= k; j++) {
-            sum += code[(i + j) % n];
+            sum += code[(i + j) % code.length];
         }
         res.push(sum);
     }
     return res;
 }
-function caseTwo(code, k) {
+
+let caseTwo = (code, k) => {
     return caseOne(code.reverse(), -k).reverse();
 }
