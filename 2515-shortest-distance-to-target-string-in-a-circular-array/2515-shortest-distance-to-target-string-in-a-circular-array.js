@@ -4,20 +4,19 @@
  * @param {number} startIndex
  * @return {number}
  */
-var closetTarget = function (words, target, sI) {
-    let i = sI;
-    let j = sI;
-    let s = 0;
+var closetTarget = function (words, target, startIndex) {
+    let i = startIndex;
+    let j = startIndex;
+    let steps = 0;
     let n = words.length;
-
-    while (s <= n) {
-        if (words[i] === target || words[j]===target)
-            return s;
+    while (steps <= n) {
+        if (words[i] === target || words[j] === target)
+            return steps;
         else {
-            j = (j + 1) % n;
-            i = (i - 1 + n) % n;
+            i = (i + 1) % n;
+            j = (j - 1 + n) % n;
         }
-        s++;
+        steps++;
     }
     return -1;
 };
