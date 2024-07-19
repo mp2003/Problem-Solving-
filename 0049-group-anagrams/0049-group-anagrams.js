@@ -4,17 +4,13 @@
  */
 var groupAnagrams = function (strs) {
     let map = new Map();
-
-    for (let s of strs) {
-        let sortedStr = s.split("").sort().join("");
-        console.log(s, sortedStr);
+    for (let str of strs) {
+        let sortedStr = str.split("").sort().join("");
         if (map.has(sortedStr)) {
-            // console.log(s);
-            map.get(sortedStr).push(s);
-        } else
-            map.set(sortedStr, [s]);
-
+            map.get(sortedStr).push(str);
+        } else {
+            map.set(sortedStr, [str]);
+        }
     }
-    console.log(map);
     return Array.from(map.values());
 };
