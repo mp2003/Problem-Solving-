@@ -4,24 +4,26 @@
  */
 var threeSum = function (nums) {
     nums.sort((a, b) => a - b);
-    let sol = [];
+    let ans = [];
     for (let i = 0; i < nums.length; i++) {
         let a = nums[i];
-        if (i > 0 && a === nums[i - 1])
-            continue;
-        let k = i + 1, j = nums.length - 1;
-        while (k < j) {
-            if (a + nums[k] + nums[j] < 0)
-                k++;
-            else if (a + nums[k] + nums[j] > 0)
-                j--;
+        if (i > 0 && a === nums[i - 1]) continue;
+
+        let l = i + 1, r = nums.length - 1;
+        while (l < r) {
+            let sum = a + nums[l] + nums[r];
+            if (sum > 0)
+                r--;
+            else if (sum < 0)
+                l++;
             else {
-                sol.push([a, nums[k], nums[j]])
-                k++;
-                while (nums[k] == nums[k - 1] && k < j)
-                    k++;
+                ans.push([a, nums[l], nums[r]]);
+                l++;
+                while (l < r && nums[l] === nums[l - 1])
+                    l++;
             }
+
         }
     }
-    return sol;
+    return ans;
 };
