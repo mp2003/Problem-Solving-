@@ -6,21 +6,20 @@
  * @return {number}
  */
 var fourSumCount = function (nums1, nums2, nums3, nums4) {
-    let count = 0;
     let map = new Map();
-    for (let a of nums1) {
-        for (let b of nums2) {
-            map.set(a + b, map.get(a + b) ? map.get(a + b) + 1 : 1);
+    let count = 0;
+    for (let num1 of nums1) {
+        for (let num2 of nums2) {
+            map.set((num1 + num2), (map.get(num1 + num2) || 0) + 1);
         }
     }
-
-    for (let a of nums3) {
-        for (let b of nums4) {
-            if (map.has(-(a + b))) {
-                count += map.get(-(a + b));
-            }
+    // console.log(map);
+    for (let num3 of nums3) {
+        for (let num4 of nums4) {
+            // console.log(-(num3 + num4))
+            if (map.has(-(num3 + num4)))
+                count += map.get(-(num3 + num4));
         }
     }
-
-    return count ;
+    return count;
 };
