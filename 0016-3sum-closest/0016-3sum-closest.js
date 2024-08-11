@@ -5,27 +5,27 @@
  */
 var threeSumClosest = function (nums, target) {
     nums.sort((a, b) => a - b);
-    let diff = Infinity, ans = 0;
+    let ans = 0;
+    let diff = Infinity;
     for (let i = 0; i < nums.length; i++) {
         let a = nums[i];
-        if (i > 0 && a === nums[i - 1]) continue;
+        if (i > 0 && nums[i - 1] === a) continue;
         let l = i + 1, r = nums.length - 1;
         while (l < r) {
             let sum = a + nums[l] + nums[r];
+            // console.log(sum, diff)
             if (diff > Math.abs(target - sum)) {
-                diff = Math.abs(target - sum);
                 ans = sum;
+                diff = Math.abs(target - sum);
             }
-            // console.log("a:", a, "b:", nums[l], "c:", nums[r], "diff", diff);
-
-            if (sum > target) r--;
-            else if (sum < target) l++;
-            else {
-                return sum;
+            if (sum === target) {
+                ans = sum;
                 l++;
-                while (l < r && nums[l] === nums[l - 1]) l++;
-            }
-            // ans = target - diff;
+                while (nums[l] == nums[l - 1] && l < r) {
+                    l++;
+                }
+            } else if (sum > target) r--;
+            else l++;
         }
     }
     return ans;
