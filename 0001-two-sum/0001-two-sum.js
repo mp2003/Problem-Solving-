@@ -6,10 +6,13 @@
 var twoSum = function (nums, target) {
     let map = new Map();
     for (let i = 0; i < nums.length; i++) {
-        let a = target - nums[i];
-        if (map.has(a)) {
-            return [i, map.get(a)];
+        map.set(nums[i], i);
+    }
+
+    for (let i = 0; i < nums.length; i++) {
+        if (map.has(target - nums[i]) && map.get(target - nums[i]) !== i) {
+            console.log(nums[i]);
+            return [i, map.get(target - nums[i])];
         }
-        map.set(nums[i], i)
     }
 };
