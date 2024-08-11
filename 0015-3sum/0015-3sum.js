@@ -7,22 +7,19 @@ var threeSum = function (nums) {
     let ans = [];
     for (let i = 0; i < nums.length; i++) {
         let a = nums[i];
-        if (i > 0 && a === nums[i - 1]) continue;
-
+        if (i > 0 && nums[i - 1] === a) continue;
         let l = i + 1, r = nums.length - 1;
         while (l < r) {
             let sum = a + nums[l] + nums[r];
-            if (sum > 0)
-                r--;
-            else if (sum < 0)
-                l++;
-            else {
+            // console.log(sum, a, nums[l], nums[r]);
+            if (sum === 0) {
                 ans.push([a, nums[l], nums[r]]);
                 l++;
-                while (l < r && nums[l] === nums[l - 1])
+                while (nums[l] == nums[l - 1] && l < r)
                     l++;
             }
-
+            else if (sum < 0) l++;
+            else r--;
         }
     }
     return ans;
