@@ -13,11 +13,11 @@
  */
 var guessNumber = function (n) {
     let l = 1, r = n;
-    while (l < r) {
-        let mid = Math.floor(l + (r - l) / 2);
-        if (guess(mid) < 0) r = mid;
-        else if (guess(mid) > 0) l = mid + 1;
-        else return mid;
+    while (l <= r) {
+        let mid = Math.floor((l + r) / 2);
+        let pick = guess(mid);
+        if (pick === -1) r = mid - 1;
+        else if (pick === 1) l = mid + 1;
+        else return mid
     }
-    return l;
 };
