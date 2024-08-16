@@ -8,13 +8,11 @@ var isPalindrome = function (x) {
     temp = Math.floor(temp / 10);
     pow++;
   }
-  // console.log(pow);
   temp = x;
   while (temp > 0) {
     revNum += (temp % 10) * Math.pow(10, --pow);
     temp = Math.floor(temp / 10);
   }
-  // console.log(revNum);
 return revNum === x
 };
 
