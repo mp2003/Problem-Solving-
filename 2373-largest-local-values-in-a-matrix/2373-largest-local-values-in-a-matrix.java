@@ -11,7 +11,6 @@ class Solution {
                         max = Math.max(max,grid[x][y]);
                     }
                 }
-
                 maxLocal[i][j] = max;
             }
         }
